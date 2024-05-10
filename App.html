@@ -1,0 +1,85 @@
+<!-- Majority of program written by AI -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>Interactive Page</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ea3939c2;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Page</h1>
+        <p>Click the button below to increase the count.</p>
+        <p id="countText">0 other people think the elevator is broken</p>
+        <button id="incrementButton" onclick="incrementCount()">Click Me!</button>
+    </div>
+
+    <script>
+        // Check if the button was already clicked by this user
+        if (!sessionStorage.getItem('buttonClicked')) {
+            document.getElementById('incrementButton').disabled = false;
+        }
+
+        // Get the current count from localStorage
+        let count = parseInt(localStorage.getItem('clickCount')) || 0;
+        document.getElementById('countText').innerText = `${count} other ${count === 1 ? 'person' : 'people'} think the elevator is broken`;
+
+        function incrementCount() {
+            count++;
+            document.getElementById('countText').innerText = `${count} other ${count === 1 ? 'person' : 'people'} think the elevator is broken`;
+            localStorage.setItem('clickCount', count); // Store click count in localStorage
+            sessionStorage.setItem('buttonClicked', 'true'); // Mark the button as clicked for this session
+            document.getElementById('incrementButton').disabled = true; // Disable the button after clicking
+        }
+
+        // Disable the button if it has already been clicked
+        window.onload = function() {
+            if (sessionStorage.getItem('buttonClicked')) {
+                document.getElementById('incrementButton').disabled = true;
+            }
+        };
+    </script>
+</body>
+</html>
