@@ -1,4 +1,20 @@
 <!-- Majority of program written by AI -->
+
+<script>
+    var clicks = require("./holderFile.json").clicks
+    const fs = require("fs")
+    
+    function onClick() {
+      clicks += 1;
+      let data = {"clicks": clicks}
+      fs.writeFile("./holderFile.json", JSON.stringify(data).replaceAll("\\",""), function(err){if(err){console.log(err)}})
+      document.getElementById("clicks").innerHTML = clicks;
+    };
+    </script>
+    <button type="button" onClick="onClick()">Click me</button>
+    <p>Clicks: <a id="clicks">0</a></p>
+
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
