@@ -52,47 +52,89 @@
     <div class="container">
         <h1>Elevator A</h1>
         <p>Click the button below if this elevator is out of order</p>
-        <p id="countText">0 other people think the elevator is broken</p>
-        <button id="incrementButton" onclick="incrementCount()">Click Me!</button>
+        <p id="countTextA">0 other people think the elevator is broken</p>
+        <button id="incrementButtonA" onclick="incrementCountA()">Click Me!</button>
     </div>
 
     <div class="container">
         <h1>Elevator B</h1>
         <p>Click the button below if this elevator is out of order</p>
-        <p id="countText">0 other people think the elevator is broken</p>
-        <button id="incrementButton" onclick="incrementCount()">Click Me!</button>
+        <p id="countTextB">0 other people think the elevator is broken</p>
+        <button id="incrementButtonB" onclick="incrementCountB()">Click Me!</button>
     </div>
 
     <div class="container">
         <h1>Elevator C</h1>
         <p>Click the button below if this elevator is out of order</p>
-        <p id="countText">0 other people think the elevator is broken</p>
-        <button id="incrementButton" onclick="incrementCount()">Click Me!</button>
+        <p id="countTextC">0 other people think the elevator is broken</p>
+        <button id="incrementButtonC" onclick="incrementCountC()">Click Me!</button>
     </div>
 
     <div class="container">
         <h1>Elevator D</h1>
         <p>Click the button below if this elevator is out of order</p>
-        <p id="countText">0 other people think the elevator is broken</p>
-        <button id="incrementButton" onclick="incrementCount()">Click Me!</button>
+        <p id="countTextD">0 other people think the elevator is broken</p>
+        <button id="incrementButtonD" onclick="incrementCountD()">Click Me!</button>
     </div>
 
     <script>
         // Check if the button was already clicked by this user
         if (!sessionStorage.getItem('buttonClicked')) {
-            document.getElementById('incrementButton').disabled = false;
+            document.getElementById('incrementButtonA').disabled = false;
+        }
+
+        if (!sessionStorage.getItem('buttonClicked')) {
+            document.getElementById('incrementButtonB').disabled = false;
+        }
+
+        if (!sessionStorage.getItem('buttonClicked')) {
+            document.getElementById('incrementButtonC').disabled = false;
+        }
+
+        if (!sessionStorage.getItem('buttonClicked')) {
+            document.getElementById('incrementButtonD').disabled = false;
         }
 
         // Get the current count from localStorage
-        let count = parseInt(localStorage.getItem('clickCount')) || 0;
-        document.getElementById('countText').innerText = `${count} other ${count === 1 ? 'person' : 'people'} think the elevator is broken`;
+        let countA = parseInt(localStorage.getItem('clickCountA')) || 0;
+        let countB = parseInt(localStorage.getItem('clickCountB')) || 0;
+        let countC = parseInt(localStorage.getItem('clickCountC')) || 0;
+        let countD = parseInt(localStorage.getItem('clickCountD')) || 0;
+        document.getElementById('countTextA').innerText = `${countA} other ${countA === 1 ? 'person' : 'people'} think the elevator is broken`;
+        document.getElementById('countTextB').innerText = `${countB} other ${countB === 1 ? 'person' : 'people'} think the elevator is broken`;
+        document.getElementById('countTextC').innerText = `${countC} other ${countC === 1 ? 'person' : 'people'} think the elevator is broken`;
+        document.getElementById('countTextD').innerText = `${countD} other ${countD === 1 ? 'person' : 'people'} think the elevator is broken`;
 
-        function incrementCount() {
-            count++;
-            document.getElementById('countText').innerText = `${count} other ${count === 1 ? 'person' : 'people'} think the elevator is broken`;
-            localStorage.setItem('clickCount', count); // Store click count in localStorage
+        function incrementCountA() {
+            countA++;
+            document.getElementById('countTextA').innerText = `${countA} other ${countA === 1 ? 'person' : 'people'} think the elevator is broken`;
+            localStorage.setItem('clickCountA', countA); // Store click count in localStorage
             sessionStorage.setItem('buttonClicked', 'true'); // Mark the button as clicked for this session
-            document.getElementById('incrementButton').disabled = true; // Disable the button after clicking
+            document.getElementById('incrementButtonA').disabled = true; // Disable the button after clicking
+        }
+
+        function incrementCountB() {
+            countB++;
+            document.getElementById('countTextB').innerText = `${countB} other ${countB === 1 ? 'person' : 'people'} think the elevator is broken`;
+            localStorage.setItem('clickCountB', countB); // Store click count in localStorage
+            sessionStorage.setItem('buttonClicked', 'true'); // Mark the button as clicked for this session
+            document.getElementById('incrementButtonB').disabled = true; // Disable the button after clicking
+        }
+
+        function incrementCountC() {
+            countC++;
+            document.getElementById('countTextC').innerText = `${countC} other ${countC === 1 ? 'person' : 'people'} think the elevator is broken`;
+            localStorage.setItem('clickCountC', countC); // Store click count in localStorage
+            sessionStorage.setItem('buttonClicked', 'true'); // Mark the button as clicked for this session
+            document.getElementById('incrementButtonC').disabled = true; // Disable the button after clicking
+        }
+
+        function incrementCountD() {
+            countD++;
+            document.getElementById('countTextD').innerText = `${countD} other ${countD === 1 ? 'person' : 'people'} think the elevator is broken`;
+            localStorage.setItem('clickCountD', countD); // Store click count in localStorage
+            sessionStorage.setItem('buttonClicked', 'true'); // Mark the button as clicked for this session
+            document.getElementById('incrementButtonD').disabled = true; // Disable the button after clicking
         }
 
         // Disable the button if it has already been clicked
